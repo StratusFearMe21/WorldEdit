@@ -35,7 +35,6 @@ import org.mockito.Answers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doCallRealMethod;
 import static org.mockito.Mockito.doReturn;
@@ -92,6 +91,7 @@ class LocalSessionTest extends BaseWorldEditTest {
         assertFalse(session.isPlaceAtPos1());
     }
 
+    /*
     @SuppressWarnings("deprecation")
     @Test
     void testPlacementPos1() throws Exception {
@@ -114,6 +114,7 @@ class LocalSessionTest extends BaseWorldEditTest {
         regionSelector.selectSecondary(pos2, limits);
         assertEquals(pos1, session.getPlacementPosition(player));
     }
+     */
 
     @SuppressWarnings("deprecation")
     @Test

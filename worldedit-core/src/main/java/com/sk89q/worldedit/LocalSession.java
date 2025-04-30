@@ -43,7 +43,7 @@ import com.sk89q.worldedit.internal.cui.ServerCUIHandler;
 import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.regions.Region;
 import com.sk89q.worldedit.regions.RegionSelector;
-import com.sk89q.worldedit.regions.selector.CuboidRegionSelector;
+import com.sk89q.worldedit.regions.selector.ExtendingCuboidRegionSelector;
 import com.sk89q.worldedit.regions.selector.RegionSelectorType;
 import com.sk89q.worldedit.session.ClipboardHolder;
 import com.sk89q.worldedit.session.Placement;
@@ -94,7 +94,7 @@ public class LocalSession {
     private transient int cuiVersion = CUI_VERSION_UNINITIALIZED;
 
     // Session related
-    private transient RegionSelector selector = new CuboidRegionSelector();
+    private transient RegionSelector selector = new ExtendingCuboidRegionSelector();
     private transient Placement placement = new Placement(PlacementType.PLAYER, BlockVector3.ZERO);
     private final transient LinkedList<EditSession> history = new LinkedList<>();
     private transient int historyPointer = 0;
@@ -112,7 +112,7 @@ public class LocalSession {
     private transient ZoneId timezone = ZoneId.systemDefault();
     private transient BlockVector3 cuiTemporaryBlock;
     @SuppressWarnings("deprecation")
-    private transient EditSession.ReorderMode reorderMode = EditSession.ReorderMode.FAST;
+    private transient EditSession.ReorderMode reorderMode = EditSession.ReorderMode.MULTI_STAGE_UNBUFFERED;
     private transient List<Countable<BlockState>> lastDistribution;
     private transient World worldOverride;
     private transient boolean tickingWatchdog = true;
