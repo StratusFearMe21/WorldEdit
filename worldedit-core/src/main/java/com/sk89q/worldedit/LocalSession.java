@@ -39,6 +39,7 @@ import com.sk89q.worldedit.internal.cui.SelectionShapeEvent;
 import com.sk89q.worldedit.regions.Region;
 import com.sk89q.worldedit.regions.RegionSelector;
 import com.sk89q.worldedit.regions.selector.CuboidRegionSelector;
+import com.sk89q.worldedit.regions.selector.ExtendingCuboidRegionSelector;
 import com.sk89q.worldedit.regions.selector.RegionSelectorType;
 import com.sk89q.worldedit.session.ClipboardHolder;
 import com.sk89q.worldedit.session.request.Request;
@@ -68,7 +69,7 @@ public class LocalSession {
     private transient int failedCuiAttempts = 0;
 
     // Session related
-    private transient RegionSelector selector = new CuboidRegionSelector();
+    private transient RegionSelector selector = new ExtendingCuboidRegionSelector();
     private transient boolean placeAtPos1 = false;
     private transient LinkedList<EditSession> history = new LinkedList<EditSession>();
     private transient int historyPointer = 0;
