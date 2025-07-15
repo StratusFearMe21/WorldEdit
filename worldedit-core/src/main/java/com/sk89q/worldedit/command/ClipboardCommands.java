@@ -218,6 +218,24 @@ public class ClipboardCommands {
     }
 
     @Command(
+            aliases = { "/copyflippaste", "/cfp" },
+            flags = "emsao",
+            desc = "//copy, //flip, //paste.",
+            help = "//copy, //flip, then //paste. All in 1 command.",
+            max = 1
+    )
+    @CommandPermissions("worldedit.clipboard.copyflippaste")
+    public void copyflippaste(Player player, LocalSession session, EditSession editSession,
+                              @Selection Region region, @Switch('e') boolean copyEntities,
+                              @Switch('m') Mask mask, @Switch('a') boolean ignoreAirBlocks,
+                              @Switch('o') boolean atOrigin, @Switch('s') boolean selectPasted,
+                              @Optional(Direction.AIM) @Direction Vector direction) throws WorldEditException {
+        copy(player, session, editSession, region, copyEntities, mask);
+        flip(player, session, editSession, direction);
+        paste(player, session, editSession, ignoreAirBlocks, atOrigin, selectPasted);
+    }
+
+    @Command(
         aliases = { "/load" },
         usage = "<filename>",
         desc = "Load a schematic into your clipboard",
