@@ -1057,6 +1057,36 @@ public class EditSession implements Extent {
         return setBlocks(faces, pattern);
     }
 
+    @SuppressWarnings("deprecation")
+    public int makeCuboidFloor(Region region, Pattern pattern) throws MaxChangedBlocksException {
+        checkNotNull(region);
+        checkNotNull(pattern);
+
+        CuboidRegion cuboid = CuboidRegion.makeCuboid(region);
+        Region faces = cuboid.getFloor();
+        return setBlocks(faces, pattern);
+    }
+
+    @SuppressWarnings("deprecation")
+    public int makeCuboidRoof(Region region, Pattern pattern) throws MaxChangedBlocksException {
+        checkNotNull(region);
+        checkNotNull(pattern);
+
+        CuboidRegion cuboid = CuboidRegion.makeCuboid(region);
+        Region faces = cuboid.getRoof();
+        return setBlocks(faces, pattern);
+    }
+
+    @SuppressWarnings("deprecation")
+    public int makeCuboidHollow(Region region, Pattern pattern) throws MaxChangedBlocksException {
+        checkNotNull(region);
+        checkNotNull(pattern);
+
+        CuboidRegion cuboid = CuboidRegion.makeCuboid(region);
+        Region faces = new RegionIntersection(cuboid.getWalls(), cuboid.getFloor(), cuboid.getRoof());
+        return setBlocks(faces, pattern);
+    }
+
     /**
      * Make the walls of the given region. The method by which the walls are found
      * may be inefficient, because there may not be an efficient implementation supported

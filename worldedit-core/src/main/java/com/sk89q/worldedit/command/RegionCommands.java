@@ -219,6 +219,48 @@ public class RegionCommands {
     }
 
     @Command(
+            aliases = { "/floor" },
+            usage = "<block>",
+            desc = "Build the floor of the selection",
+            min = 1,
+            max = 1
+    )
+    @CommandPermissions("worldedit.region.floor")
+    @Logging(REGION)
+    public void floor(Player player, EditSession session, @Selection Region region, Pattern pattern) throws WorldEditException {
+        int affected = session.makeCuboidFloor(region, Patterns.wrap(pattern));
+        player.print(affected + " block(s) have been changed.");
+    }
+
+    @Command(
+            aliases = { "/roof" },
+            usage = "<block>",
+            desc = "Build the roof of the selection",
+            min = 1,
+            max = 1
+    )
+    @CommandPermissions("worldedit.region.roof")
+    @Logging(REGION)
+    public void roof(Player player, EditSession session, @Selection Region region, Pattern pattern) throws WorldEditException {
+        int affected = session.makeCuboidRoof(region, Patterns.wrap(pattern));
+        player.print(affected + " block(s) have been changed.");
+    }
+
+    @Command(
+            aliases = { "/hset" },
+            usage = "<block>",
+            desc = "Generates a hollow cube",
+            min = 1,
+            max = 1
+    )
+    @CommandPermissions("worldedit.region.hset")
+    @Logging(REGION)
+    public void hset(Player player, EditSession session, @Selection Region region, Pattern pattern) throws WorldEditException {
+        int affected = session.makeCuboidHollow(region, Patterns.wrap(pattern));
+        player.print(affected + " block(s) have been changed.");
+    }
+
+    @Command(
         aliases = { "/faces", "/outline" },
         usage = "<block>",
         desc = "Build the walls, ceiling, and floor of a selection",

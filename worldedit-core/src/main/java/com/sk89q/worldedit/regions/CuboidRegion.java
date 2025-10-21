@@ -159,6 +159,18 @@ public class CuboidRegion extends AbstractRegion implements FlatRegion {
                 new CuboidRegion(pos1.setZ(max.getZ()), pos2.setZ(max.getZ())));
     }
 
+    public Region getFloor() {
+        Vector min = getMinimumPoint();
+
+        return new CuboidRegion(pos1.setY(min.getY()), pos2.setY(min.getY()));
+    }
+
+    public Region getRoof() {
+        Vector max = getMaximumPoint();
+
+        return new CuboidRegion(pos1.setY(max.getY()), pos2.setY(max.getY()));
+    }
+
     @Override
     public Vector getMinimumPoint() {
         return new Vector(Math.min(pos1.getX(), pos2.getX()),
